@@ -1,0 +1,790 @@
+/* =============================================================================
+   Snazzy Paws Grooming — Custom Brand Stylesheet (Bootstrap 5 Override)
+   BIT607 Web Development | Assessment 3
+   Author: Ryan McCormick
+   Description: Brand-specific styles layered on top of Bootstrap 5.
+                Overrides Bootstrap variables and adds custom components.
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. CSS Custom Properties — Brand Colour Palette & Tokens
+   ----------------------------------------------------------------------------- */
+:root {
+  /* --- Brand colours --- */
+  --sp-primary:        #3A7CA5;  /* Steel blue — primary brand colour          */
+  --sp-primary-dark:   #2C6080;  /* Darker shade for hover states              */
+  --sp-primary-light:  #E8F4F8;  /* Very light tint for backgrounds            */
+  --sp-accent:         #C46D30;  /* Warm orange — CTA buttons, highlights      */
+  --sp-accent-dark:    #a85a24;  /* Darker accent for hover states             */
+  --sp-dark:           #1C2A3A;  /* Near-black for header, footer              */
+  --sp-body:           #344A5C;  /* Main body text colour                      */
+  --sp-muted:          #6B8190;  /* Secondary/muted text                       */
+  --sp-light:          #F5F8FA;  /* Light section backgrounds                  */
+  --sp-white:          #FFFFFF;  /* White                                      */
+  --sp-border:         #D6E5EE;  /* Soft border colour                         */
+
+  /* --- Typography --- */
+  --sp-font-heading:   Georgia, 'Times New Roman', serif;
+  --sp-font-body:      'Helvetica Neue', Arial, sans-serif;
+
+  /* --- Effects --- */
+  --sp-radius:         0.375rem;
+  --sp-radius-lg:      0.75rem;
+  --sp-shadow:         0 2px 8px  rgba(28, 42, 58, 0.10);
+  --sp-shadow-lg:      0 6px 24px rgba(28, 42, 58, 0.14);
+  --sp-transition:     0.2s ease;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. Base Overrides
+   Description: Override Bootstrap's default base styles with brand typography
+   ----------------------------------------------------------------------------- */
+body {
+  font-family: var(--sp-font-body);
+  color: var(--sp-body);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sp-font-heading);
+  color: var(--sp-dark);
+}
+
+a {
+  color: var(--sp-primary);
+}
+
+a:hover,
+a:focus {
+  color: var(--sp-primary-dark);
+}
+
+
+/* -----------------------------------------------------------------------------
+   3. Skip Link (Accessibility)
+   Description: Visible only on keyboard focus — allows keyboard users to bypass nav
+   ----------------------------------------------------------------------------- */
+.skip-link {
+  position: absolute;
+  top: -4rem;
+  left: 0;
+  background: var(--sp-dark);
+  color: var(--sp-white);
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  border-radius: 0 0 var(--sp-radius) 0;
+  text-decoration: none;
+  font-weight: 700;
+  transition: top var(--sp-transition);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. Navigation (Bootstrap Navbar Override)
+   Description: Applies brand dark background and styling to Bootstrap's navbar
+   ----------------------------------------------------------------------------- */
+#site-navbar {
+  background-color: var(--sp-dark);           /* Override Bootstrap's bg-dark colour  */
+  box-shadow: var(--sp-shadow);               /* Subtle shadow for depth              */
+}
+
+/* Brand logo link */
+#site-navbar .navbar-brand {
+  font-family: var(--sp-font-heading);
+  font-size: 1.25rem;
+  color: var(--sp-white);
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+#site-navbar .navbar-brand:hover,
+#site-navbar .navbar-brand:focus {
+  color: var(--sp-primary-light);
+}
+
+/* Navigation links */
+#site-navbar .nav-link {
+  color: var(--sp-white);
+  border-radius: var(--sp-radius);
+  font-size: 0.9375rem;
+  transition: background-color var(--sp-transition);
+  padding: 0.5rem 0.75rem;
+}
+
+#site-navbar .nav-link:hover,
+#site-navbar .nav-link:focus,
+#site-navbar .nav-link.active {
+  background-color: var(--sp-primary);      /* Blue highlight on hover/active        */
+  color: var(--sp-white);
+}
+
+/* Hamburger icon colour override */
+#site-navbar .navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+#site-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255%2C255%2C255%2C0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. Custom Button Styles
+   Description: Brand-coloured CTA buttons supplementing Bootstrap's .btn
+   ----------------------------------------------------------------------------- */
+
+/* Primary CTA — warm orange (accent colour) */
+.btn-brand-primary {
+  background-color: var(--sp-accent);
+  color: var(--sp-white);
+  border: 2px solid var(--sp-accent);
+  border-radius: var(--sp-radius);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  display: inline-block;
+  transition:
+    background-color var(--sp-transition),
+    border-color     var(--sp-transition),
+    transform        var(--sp-transition);
+}
+
+.btn-brand-primary:hover,
+.btn-brand-primary:focus {
+  background-color: var(--sp-accent-dark);
+  border-color: var(--sp-accent-dark);
+  color: var(--sp-white);
+  transform: translateY(-2px);
+}
+
+.btn-brand-primary:focus-visible {
+  outline: 3px solid var(--sp-primary);
+  outline-offset: 3px;
+}
+
+/* Outline CTA — white outline (used on dark/image backgrounds) */
+.btn-brand-outline {
+  background-color: transparent;
+  color: var(--sp-white);
+  border: 2px solid var(--sp-white);
+  border-radius: var(--sp-radius);
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  display: inline-block;
+  transition:
+    background-color var(--sp-transition),
+    color            var(--sp-transition);
+}
+
+.btn-brand-outline:hover,
+.btn-brand-outline:focus {
+  background-color: var(--sp-white);
+  color: var(--sp-primary);
+}
+
+
+/* -----------------------------------------------------------------------------
+   6. Section Typography Helpers
+   Description: Shared heading/lead styles for section headers
+   ----------------------------------------------------------------------------- */
+.section-heading {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-dark);
+}
+
+.section-lead {
+  text-align: center;
+  color: var(--sp-muted);
+  max-width: 52ch;
+  margin-inline: auto;
+  margin-bottom: 3rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   7. Hero Section (Home Page)
+   Description: Full-width image with dark overlay and centred CTA text
+   ----------------------------------------------------------------------------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--sp-dark);           /* Fallback if image fails to load      */
+}
+
+/* Hero background image */
+.hero-img {
+  width: 100%;
+  height: clamp(260px, 50vw, 520px);          /* Fluid height between 260–520 px      */
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.55;                              /* Darken so text is legible            */
+  display: block;
+}
+
+/* Text overlay sits absolutely over the image */
+.hero-content {
+  position: absolute;
+  inset: 0;                                  /* Shorthand for top/right/bottom/left  */
+  display: flex;
+  align-items: center;
+}
+
+.hero-content h1 {
+  color: var(--sp-white);
+  margin-bottom: 1rem;
+}
+
+.hero-content p {
+  color: #d9ecf5;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: 2rem;
+  max-width: 48ch;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   8. Page Banner (Inner Pages)
+   Description: Gradient banner used at the top of all non-home pages
+   ----------------------------------------------------------------------------- */
+.page-banner {
+  background: linear-gradient(135deg, var(--sp-dark) 0%, var(--sp-primary-dark) 100%);
+  padding: 4rem 0 3rem;
+  text-align: center;
+}
+
+.page-banner h1 {
+  color: var(--sp-white);
+  margin-bottom: 0.5rem;
+}
+
+.page-banner p {
+  color: #b8d8e8;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+   9. Feature Cards (Home Page — "Why Choose Us")
+   Description: Icon + heading + text cards in a responsive grid
+   ----------------------------------------------------------------------------- */
+.features {
+  padding: 5rem 0;
+  background-color: var(--sp-white);
+}
+
+.feature-card {
+  background: var(--sp-light);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: box-shadow var(--sp-transition), transform var(--sp-transition);
+  height: 100%;                              /* Equal-height cards in Bootstrap row   */
+}
+
+.feature-card:hover {
+  box-shadow: var(--sp-shadow-lg);
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.feature-card h3 {
+  font-family: var(--sp-font-heading);
+  color: var(--sp-dark);
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+}
+
+.feature-card p {
+  color: var(--sp-muted);
+  font-size: 0.9375rem;
+  margin-bottom: 0;
+}
+
+
+/* -----------------------------------------------------------------------------
+   10. About Section (Home Page)
+   Description: Two-column text + image layout
+   ----------------------------------------------------------------------------- */
+.about {
+  background-color: var(--sp-light);
+  padding: 5rem 0;
+}
+
+.about-image img {
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow-lg);
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+
+/* -----------------------------------------------------------------------------
+   11. Services Table
+   Description: Styled pricing table — overrides Bootstrap's .table defaults
+   ----------------------------------------------------------------------------- */
+.services-section {
+  padding: 4rem 0 6rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--sp-radius-lg);
+  box-shadow: var(--sp-shadow);
+  border: 1px solid var(--sp-border);
+}
+
+/* Table head uses brand primary colour */
+.services-table thead {
+  background-color: var(--sp-primary);
+}
+
+.services-table thead th {
+  color: var(--sp-white);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.5rem;
+  border: none;
+}
+
+.services-table tbody tr {
+  transition: background-color var(--sp-transition);
+  border-bottom: 1px solid var(--sp-border);
+}
+
+.services-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.services-table tbody tr:hover {
+  background-color: var(--sp-primary-light);
+}
+
+.services-table td {
+  padding: 1rem 1.5rem;
+  vertical-align: top;
+  font-size: 0.9375rem;
+}
+
+.services-table td:first-child {
+  font-weight: 600;
+  color: var(--sp-dark);
+}
+
+.services-table td:last-child {
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--sp-primary);
+}
+
+/* Addon badge — small pill label */
+.badge-addon {
+  display: inline-block;
+  background-color: var(--sp-accent);
+  color: var(--sp-white);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 99px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   12. Gallery Grid
+   Description: Responsive image grid with hover zoom effect
+   ----------------------------------------------------------------------------- */
+.gallery-section {
+  padding: 4rem 0 6rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);      /* 4 columns on desktop                 */
+  gap: 0.75rem;
+}
+
+.gallery-item {
+  aspect-ratio: 1;                            /* Square crop for all images           */
+  overflow: hidden;
+  border-radius: var(--sp-radius);
+  background-color: var(--sp-light);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;            /* Smooth zoom on hover                 */
+}
+
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+
+/* Responsive gallery: 2 columns on small screens */
+@media (max-width: 767px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   13. Forms (Booking & Contact Pages)
+   Description: Card-style form layout with branded input focus states
+   ----------------------------------------------------------------------------- */
+.form-section {
+  padding: 4rem 0 6rem;
+}
+
+.card-form {
+  background: var(--sp-white);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--sp-shadow);
+}
+
+/* Override Bootstrap's default focus ring with brand colour */
+.card-form .form-control:focus,
+.card-form .form-select:focus {
+  border-color: var(--sp-primary);
+  box-shadow: 0 0 0 3px rgba(58, 124, 165, 0.2);
+}
+
+.card-form .form-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--sp-dark);
+}
+
+.required-note {
+  font-size: 0.8125rem;
+  color: var(--sp-muted);
+  margin-bottom: 1.25rem;
+}
+
+.required-note span {
+  color: #c0392b;                            /* Red asterisk for required fields      */
+}
+
+.form-intro h2 {
+  font-family: var(--sp-font-heading);
+  color: var(--sp-dark);
+  margin-bottom: 1rem;
+}
+
+.form-intro p,
+.form-intro li {
+  color: var(--sp-muted);
+  font-size: 0.9375rem;
+}
+
+.form-intro ul {
+  color: var(--sp-muted);
+  font-size: 0.9375rem;
+  padding-left: 1.5rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   14. Contact Page — Map Section
+   Description: Side-by-side address details and embedded map
+   ----------------------------------------------------------------------------- */
+.map-section {
+  background-color: var(--sp-light);
+  padding: 4rem 0;
+}
+
+.map-embed {
+  border-radius: var(--sp-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow);
+  aspect-ratio: 16 / 9;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.map-details h2 {
+  font-family: var(--sp-font-heading);
+  color: var(--sp-dark);
+  margin-bottom: 1rem;
+}
+
+.map-details address {
+  font-style: normal;
+  color: var(--sp-muted);
+  margin-bottom: 1rem;
+}
+
+.map-details p {
+  color: var(--sp-muted);
+  font-size: 0.9375rem;
+}
+
+.map-details strong {
+  color: var(--sp-dark);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   15. Roster Page — Staff Table
+   Description: Styled table for the protected staff roster page
+   ----------------------------------------------------------------------------- */
+.roster-section {
+  padding: 4rem 0 6rem;
+}
+
+.roster-table thead {
+  background-color: var(--sp-primary);
+}
+
+.roster-table thead th {
+  color: var(--sp-white);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 1rem 1.25rem;
+  border: none;
+}
+
+.roster-table tbody tr:hover {
+  background-color: var(--sp-primary-light);
+}
+
+.roster-table td {
+  padding: 0.875rem 1.25rem;
+  vertical-align: middle;
+  color: var(--sp-body);
+  font-size: 0.9375rem;
+}
+
+/* Staff role badge styling */
+.role-badge {
+  display: inline-block;
+  background-color: var(--sp-primary-light);
+  color: var(--sp-primary-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid var(--sp-border);
+}
+
+/* Status indicator — available / unavailable */
+.status-available {
+  color: #2e7d32;                            /* Green for available staff             */
+  font-weight: 600;
+}
+
+.status-unavailable {
+  color: var(--sp-muted);
+  font-weight: 600;
+}
+
+/* Alert banner shown on the protected roster page */
+.roster-alert {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: var(--sp-radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  color: #664d03;
+}
+
+
+/* -----------------------------------------------------------------------------
+   16. Privacy Policy Page
+   Description: Long-form document page with readable prose layout
+   ----------------------------------------------------------------------------- */
+.privacy-section {
+  padding: 4rem 0 6rem;
+}
+
+/* Constrain prose width for comfortable reading — approximately 70 characters */
+.privacy-content {
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.privacy-content h2 {
+  font-family: var(--sp-font-heading);
+  color: var(--sp-dark);
+  font-size: 1.35rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 2px solid var(--sp-border);
+  padding-bottom: 0.35rem;
+}
+
+.privacy-content p,
+.privacy-content li {
+  color: var(--sp-muted);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+.privacy-content ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.privacy-content strong {
+  color: var(--sp-dark);
+}
+
+/* Last-updated notice at top of privacy page */
+.privacy-last-updated {
+  display: inline-block;
+  background-color: var(--sp-primary-light);
+  color: var(--sp-primary-dark);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+  margin-bottom: 1.5rem;
+}
+
+
+/* -----------------------------------------------------------------------------
+   17. Footer
+   Description: Multi-column dark footer with brand links and hours table
+   ----------------------------------------------------------------------------- */
+.site-footer {
+  background-color: var(--sp-dark);
+  color: #a8bed0;
+}
+
+.site-footer .footer-inner {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+.site-footer .footer-brand strong {
+  display: block;
+  font-family: var(--sp-font-heading);
+  font-size: 1.2rem;
+  color: var(--sp-white);
+  margin-bottom: 0.5rem;
+}
+
+.site-footer .footer-brand p {
+  font-size: 0.9rem;
+  color: #7a9bb0;
+}
+
+/* Footer section headings */
+.site-footer .footer-col-heading {
+  font-family: var(--sp-font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a9bb0;
+  margin-bottom: 1rem;
+}
+
+/* Footer navigation links */
+.site-footer .footer-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer .footer-nav-list li {
+  margin-bottom: 0.5rem;
+}
+
+.site-footer .footer-nav-list a {
+  color: #a8bed0;
+  text-decoration: none;
+  font-size: 0.9375rem;
+  transition: color var(--sp-transition);
+}
+
+.site-footer .footer-nav-list a:hover,
+.site-footer .footer-nav-list a:focus {
+  color: var(--sp-white);
+}
+
+/* Footer hours table */
+.hours-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.9rem;
+  color: #a8bed0;
+}
+
+.hours-table td {
+  padding: 0.25rem 0;
+  vertical-align: top;
+}
+
+.hours-table td:first-child {
+  padding-right: 1rem;
+  white-space: nowrap;
+}
+
+.hours-table td:last-child {
+  color: var(--sp-white);                    /* Times displayed in white              */
+}
+
+/* Footer bottom strip — copyright line */
+.site-footer .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #5a7a8f;
+}
+
+/* Footer privacy policy link */
+.site-footer .footer-bottom a {
+  color: #7a9bb0;
+  text-decoration: underline;
+  margin-left: 0.5rem;
+}
+
+.site-footer .footer-bottom a:hover {
+  color: var(--sp-white);
+}

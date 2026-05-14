@@ -1,0 +1,62 @@
+# =============================================================================
+# Snazzy Paws Grooming — Staff Directory Access Control
+# BIT607 Web Development | Assessment 3
+#
+# PURPOSE:
+#   This .htaccess file restricts access to the /staff/ directory to
+#   authorised personnel only. Any visitor attempting to access files in
+#   this directory will be prompted for a username and password via
+#   HTTP Basic Authentication.
+#
+# HOW IT WORKS:
+#   Apache reads this file automatically when a request is made to any
+#   resource inside the /staff/ directory. The AuthUserFile directive
+#   points to an .htpasswd file containing hashed credentials.
+#
+# HOW TO SET UP ON A LIVE SERVER:
+#   1. Generate an .htpasswd file using: htpasswd -c /path/to/.htpasswd staff
+#   2. Update the AuthUserFile path below to match the absolute server path.
+#   3. Upload this .htaccess and the .htpasswd file to the server.
+#   4. The .htpasswd file should be stored OUTSIDE the web root for security.
+#
+# SECURITY NOTES:
+#   - Basic Authentication sends credentials encoded in Base64. For security,
+#     this should always be used over HTTPS (SSL/TLS) to prevent interception.
+#   - The .htpasswd file must NOT be placed inside the public web root.
+#   - This file prevents directory listing and protects all files in /staff/.
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# HTTP Basic Authentication — Prompt for credentials
+# ---------------------------------------------------------------------
+
+# AuthType:     Specifies the authentication method (Basic = username/password prompt)
+AuthType Basic
+
+# AuthName:     The message displayed in the browser's login dialog box
+AuthName "Snazzy Paws Grooming — Staff Access Only"
+
+# AuthUserFile: Absolute path to the .htpasswd file containing hashed credentials
+#               Update this path to match the actual server file system path.
+#               Keep this file OUTSIDE the public web root (e.g., above public_html/).
+AuthUserFile /etc/snazzypaws/.htpasswd
+
+# Require valid-user: Only users listed in the .htpasswd file may access this directory
+Require valid-user
+
+
+# ------------------------------------------------------------------------
+# Deny directory listing — prevents the server from showing a file index
+# if no index.html is present in the directory
+# -------------------------------------------------------------------------------
+Options -Indexes
+
+
+# ----------------------------------------------------------------------
+# Protect the .htpasswd file itself from being downloaded via the browser
+# (additional safety measure in case AuthUserFile is inside the web root)
+# -----------------------------------------------------------------------------
+<Files ".htpasswd">
+  Require all denied
+</Files>

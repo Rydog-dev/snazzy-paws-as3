@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport — required for Bootstrap's responsive grid to work correctly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page description — summarises this page for search engines -->
+    <meta name="description" content="Snazzy Paws Grooming services and pricing — baths, haircuts, nail trims, spa packages and more for dogs in Hamilton.">
+
+    <title>Services &amp; Pricing | Snazzy Paws Grooming</title>
+
+    <!-- Bootstrap 5.3 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    >
+
+    <!-- Custom brand stylesheet -->
+    <link rel="stylesheet" href="css/custom.css">
+  </head>
+
+  <body>
+
+    <!-- ======================================================================
+         SKIP LINK
+         ====================================================================== -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+    <!-- ======================================================================
+         NAVIGATION
+         ====================================================================== -->
+    <nav
+      id="site-navbar"
+      class="navbar navbar-expand-lg sticky-top"
+      aria-label="Primary navigation"
+    >
+      <div class="container">
+
+        <a
+          class="navbar-brand"
+          href="index.html"
+          aria-label="Snazzy Paws Grooming — go to home page"
+        >
+          Snazzy Paws Grooming
+        </a>
+
+        <!-- Mobile hamburger toggle -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <!-- aria-current="page" marks Services as the active page -->
+              <a class="nav-link active" href="services.html" aria-current="page">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gallery.html">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="booking.html">Book Now</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+
+
+    <!-- ======================================================================
+         MAIN CONTENT
+         ====================================================================== -->
+    <main id="main-content">
+
+
+      <!-- ------------------------------------------------------------------
+           PAGE BANNER
+           Gradient header banner used on all inner pages.
+           ------------------------------------------------------------------ -->
+      <section class="page-banner" aria-labelledby="page-title">
+        <div class="container">
+          <h1 id="page-title">Services &amp; Pricing</h1>
+          <p>Professional grooming packages tailored to every breed and budget.</p>
+        </div>
+      </section>
+
+
+      <!-- ------------------------------------------------------------------
+           SERVICES TABLE SECTION
+           Responsive table listing all grooming services with prices.
+           ------------------------------------------------------------------ -->
+      <section class="services-section" aria-labelledby="services-table-heading">
+        <div class="container">
+
+          <h2 id="services-table-heading" class="section-heading">Dog Grooming Services</h2>
+          <p class="section-lead">
+            All prices are indicative and may vary based on your dog's size, coat condition,
+            and breed. Contact us for an exact quote.
+          </p>
+
+          <!-- Wrapper provides horizontal scroll on narrow screens -->
+          <div class="table-wrapper">
+            <table
+              class="services-table table"
+              aria-label="Grooming services and pricing"
+            >
+              <!-- Table header row -->
+              <thead>
+                <tr>
+                  <th scope="col">Service</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Price (NZD)</th>
+                </tr>
+              </thead>
+
+              <!-- Table body — each row is one service -->
+              <tbody>
+                <tr>
+                  <td>Bath &amp; Brush</td>
+                  <td>Shampoo, blow-dry, brush-out and nail trim.</td>
+                  <td>$25 &ndash; $50</td>
+                </tr>
+                <tr>
+                  <td>Haircut</td>
+                  <td>
+                    Bath, blow-dry, haircut based on breed standard or
+                    owner preference, and nail trim.
+                  </td>
+                  <td>$45 &ndash; $85</td>
+                </tr>
+                <tr>
+                  <td>Nail Trim</td>
+                  <td>Trim nails and filing where required.</td>
+                  <td>$10 &ndash; $20</td>
+                </tr>
+                <tr>
+                  <td>Ear Cleaning</td>
+                  <td>Gentle cleaning of ears to remove wax and debris.</td>
+                  <td>$10 &ndash; $15</td>
+                </tr>
+                <tr>
+                  <td>Teeth Brushing</td>
+                  <td>Brushing with pet-safe toothpaste.</td>
+                  <td>$10 &ndash; $15</td>
+                </tr>
+                <tr>
+                  <td>
+                    Spa Package
+                    <span class="badge-addon">Popular</span>
+                  </td>
+                  <td>
+                    Bath, blow-dry, haircut, nail trim, ear cleaning,
+                    teeth brushing and a conditioning treatment.
+                  </td>
+                  <td>$75 &ndash; $150</td>
+                </tr>
+                <tr>
+                  <td>Puppy Package</td>
+                  <td>
+                    Gentle introductory groom for puppies: bath, brush-out,
+                    nail trim and ear check.
+                  </td>
+                  <td>$30 &ndash; $60</td>
+                </tr>
+                <tr>
+                  <td>Senior Dog Package</td>
+                  <td>
+                    Relaxed, gentle grooming session tailored to the needs
+                    of older dogs.
+                  </td>
+                  <td>$40 &ndash; $80</td>
+                </tr>
+                <tr>
+                  <td>
+                    Full Grooming Package
+                    <span class="badge-addon">Best Value</span>
+                  </td>
+                  <td>
+                    Complete groom including bath, blow-dry, full haircut,
+                    nail trim, ear cleaning and finishing spray.
+                  </td>
+                  <td>$60 &ndash; $120</td>
+                </tr>
+                <tr>
+                  <td>De-Shedding Treatment</td>
+                  <td>
+                    Specialised treatment to reduce shedding using
+                    professional de-shedding shampoo and tools.
+                  </td>
+                  <td>$30 &ndash; $60</td>
+                </tr>
+              </tbody>
+            </table>
+          </div><!-- /.table-wrapper -->
+
+          <!-- Call-to-action below the table -->
+          <div class="text-center mt-5">
+            <p class="text-muted mb-3">
+              Ready to book? Our team is here to help your dog look their best.
+            </p>
+            <a href="booking.html" class="btn-brand-primary">Book an Appointment</a>
+          </div>
+
+        </div><!-- /.container -->
+      </section>
+
+
+    </main>
+    <!-- /.main -->
+
+
+    <!-- ======================================================================
+         FOOTER
+         ====================================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="row g-5">
+
+          <!-- Brand -->
+          <div class="col-12 col-md-6 col-lg-5 footer-brand">
+            <strong>Snazzy Paws Grooming</strong>
+            <p>Hamilton's premier professional dog grooming salon.</p>
+          </div>
+
+          <!-- Quick links -->
+          <div class="col-6 col-lg-3">
+            <h3 class="footer-col-heading">Quick Links</h3>
+            <nav aria-label="Footer navigation">
+              <ul class="footer-nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="booking.html">Book Now</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- Opening hours -->
+          <div class="col-6 col-lg-4">
+            <h3 class="footer-col-heading">Opening Hours</h3>
+            <table class="hours-table" aria-label="Salon opening hours">
+              <tbody>
+                <tr>
+                  <td>Monday &ndash; Friday</td>
+                  <td>9:00 am &ndash; 5:00 pm</td>
+                </tr>
+                <tr>
+                  <td>Saturday</td>
+                  <td>9:00 am &ndash; 5:00 pm</td>
+                </tr>
+                <tr>
+                  <td>Sunday</td>
+                  <td>Closed</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Snazzy Paws Grooming. All rights reserved.
+          <a href="privacy.html">Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
+
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmzzmVAMhHBVmJk8eu0fO5RQNP"
+      crossorigin="anonymous"
+    ></script>
+
+  </body>
+</html>
